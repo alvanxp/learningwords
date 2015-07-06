@@ -5,11 +5,10 @@ using System.Web;
 
 namespace LearningWordsApi.Models
 {
-    public class Word
+    public class WordModel
     {
-        public string WordDescription { get; set; }
+        public string Word { get; set; }
         public string Language { get; set; }
-
-
+        public string Description { get; set; }
     }
 }

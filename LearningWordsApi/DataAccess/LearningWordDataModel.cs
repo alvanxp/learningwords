@@ -1,4 +1,4 @@
-using LearningWordsApi.Model;
+using LearningWordsApi.Models;
 
 namespace LearningWordsApi.DataAccess
 {
@@ -7,24 +7,24 @@ namespace LearningWordsApi.DataAccess
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class LearningWordsDataModel : DbContext
+    public partial class LearningWordDataModel : DbContext
     {
-        public LearningWordsDataModel()
-            : base("name=LearningWordsDataModel")
+        public LearningWordDataModel()
+            : base("name=LearningWordDataModel")
         {
         }
 
+        public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<WordLearned> WordLearneds { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<WordLearned>()
-                .Property(e => e.Word)
-                .IsUnicode(false);
+            modelBuilder.Entity<Language>()
+                .HasOptional(e => e.WordLearned)
+                .WithRequired(e => e.Language);
 
             modelBuilder.Entity<WordLearned>()
-                .Property(e => e.Language)
-                .IsFixedLength()
+                .Property(e => e.Description)
                 .IsUnicode(false);
         }
     }
