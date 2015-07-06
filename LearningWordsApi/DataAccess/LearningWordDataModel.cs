@@ -19,10 +19,6 @@ namespace LearningWordsApi.DataAccess
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Language>()
-                .HasOptional(e => e.WordLearned)
-                .WithRequired(e => e.Language);
-
             modelBuilder.Entity<WordLearned>()
                 .Property(e => e.Description)
                 .IsUnicode(false);

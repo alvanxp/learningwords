@@ -53,8 +53,12 @@ public class WordsController : ApiController
     [Route("api/words/random")]
     public async Task<IHttpActionResult> GetWordRandom(string from, string to)
     {
-        WordLearned wordLearned = await db.WordLearneds.OrderBy(r => Guid.NewGuid())
-            .FirstOrDefaultAsync(W=>W.Language.LanguageCode == from);
+        int randomID =
+            db.Database.SqlQuery<int>(string.Format("select top 1 WL.ID from dbo.WordLearned wl inner join dbo.language l on wl.languageid = l.id  where l.laNguagecode = '{0}' ORDER BY NEWID()", from))
+                .FirstOrDefault();
+        WordLearned wordLearned =
+            db.WordLearneds.FirstOrDefault(f=>f.ID== randomID);
+      
         if (wordLearned == null)
         {
             return NotFound();

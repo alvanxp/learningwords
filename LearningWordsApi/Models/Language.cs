@@ -9,6 +9,11 @@ namespace LearningWordsApi.Models
     [Table("Language")]
     public partial class Language
     {
+        public Language()
+        {
+            WordLearneds = new HashSet<WordLearned>();
+        }
+
         public int ID { get; set; }
 
         [Required]
@@ -18,6 +23,6 @@ namespace LearningWordsApi.Models
         [StringLength(250)]
         public string Description { get; set; }
 
-        public virtual WordLearned WordLearned { get; set; }
+        public virtual ICollection<WordLearned> WordLearneds { get; set; }
     }
 }
