@@ -11,6 +11,8 @@ namespace LearningWordsApi.Models
     {
         public int ID { get; set; }
 
+        public Guid WordId { get; set; }
+
         [Required]
         [StringLength(150)]
         public string Word { get; set; }

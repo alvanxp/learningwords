@@ -51,20 +51,30 @@ public class WordsController : ApiController
         // GET: api/Words/5
     [ResponseType(typeof (WordModel))]
     [Route("api/words/random")]
-    public async Task<IHttpActionResult> GetWordRandom()
+    public async Task<IHttpActionResult> GetWordRandom(string from, string to)
     {
         WordLearned wordLearned = await db.WordLearneds.OrderBy(r => Guid.NewGuid())
-            .FirstOrDefaultAsync();
+            .FirstOrDefaultAsync(W=>W.Language.LanguageCode == from);
         if (wordLearned == null)
         {
             return NotFound();
         }
 
+        IQueryable<WordLearned> translateWord = db.WordLearneds
+           .Where(tw => tw.WordId == wordLearned.WordId);
+
+        var toLearned = translateWord.FirstOrDefault(t => t.Language.LanguageCode == to);
+        if (toLearned == null) return NotFound();
+
+        
         return Ok(new WordModel()
         {
             Word = wordLearned.Word,
             Description = wordLearned.Description,
-            Language = wordLearned.Language.LanguageCode
+            Language = wordLearned.Language.LanguageCode,
+            ToWord = toLearned.Word,
+            ToLanguage = toLearned.Language.LanguageCode,
+            ToDescription = toLearned.Description
         });
     }
 
