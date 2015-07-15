@@ -65,7 +65,7 @@ public class WordsController : ApiController
         }
 
         IQueryable<WordLearned> translateWord = db.WordLearneds
-           .Where(tw => tw.WordId == wordLearned.WordId);
+           .Where(tw => tw.WordID == wordLearned.WordID);
 
         var toLearned = translateWord.FirstOrDefault(t => t.Language.LanguageCode == to);
         if (toLearned == null) return NotFound();
@@ -119,14 +119,29 @@ public class WordsController : ApiController
 
         // POST: api/Words
         [ResponseType(typeof(WordLearned))]
-        public async Task<IHttpActionResult> PostWordLearned(WordLearned wordLearned)
+        public async Task<IHttpActionResult> PostWordLearned(WordModel word)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var language1 = await db.Languages.FirstOrDefaultAsync(l => l.LanguageCode == word.Language);
+            var language2 = await db.Languages.FirstOrDefaultAsync(l => l.LanguageCode == word.ToLanguage);
 
+            Guid wordId = Guid.NewGuid();
+            var wordLearned = new WordLearned();
+            wordLearned.LanguageID = language1.ID;
+            wordLearned.Language = language1;
+            wordLearned.Word = word.Word;
+            wordLearned.WordID = wordId;
             db.WordLearneds.Add(wordLearned);
+
+            var toWordLearned2 = new WordLearned();
+            toWordLearned2.LanguageID = language2.ID;
+            toWordLearned2.Language = language2;
+            toWordLearned2.Word = word.ToWord;
+            toWordLearned2.WordID = wordId;
+            db.WordLearneds.Add(toWordLearned2);
 
             try
             {
@@ -172,7 +187,7 @@ public class WordsController : ApiController
             base.Dispose(disposing);
         }
 
-        private bool WordLearnedExists(int id)
+        private bool WordLearnedExists(long id)
         {
             return db.WordLearneds.Count(e => e.ID == id) > 0;
         }

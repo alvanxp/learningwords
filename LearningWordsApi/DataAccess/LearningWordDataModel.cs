@@ -10,7 +10,7 @@ namespace LearningWordsApi.DataAccess
     public partial class LearningWordDataModel : DbContext
     {
         public LearningWordDataModel()
-            : base("name=LearningWordDataModel")
+            : base("name=LearningWordDataModel1")
         {
         }
 
@@ -19,6 +19,19 @@ namespace LearningWordsApi.DataAccess
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Language>()
+                .Property(e => e.LanguageCode)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Language>()
+                .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Language>()
+                .HasMany(e => e.WordLearneds)
+                .WithRequired(e => e.Language)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<WordLearned>()
                 .Property(e => e.Description)
                 .IsUnicode(false);

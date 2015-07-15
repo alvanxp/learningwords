@@ -1,11 +1,9 @@
-namespace LearningWordsApi.Models
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+namespace LearningWordsApi.DataAccess
+{
     [Table("Language")]
     public partial class Language
     {
@@ -16,11 +14,10 @@ namespace LearningWordsApi.Models
 
         public int ID { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [StringLength(25)]
         public string LanguageCode { get; set; }
 
-        [StringLength(250)]
+        [Column(TypeName = "text")]
         public string Description { get; set; }
 
         public virtual ICollection<WordLearned> WordLearneds { get; set; }
