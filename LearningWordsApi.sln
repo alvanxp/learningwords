@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningWordsApi", "Learnin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningWordsApi.Tests", "LearningWordsApi.Tests\LearningWordsApi.Tests.csproj", "{8DC4F363-8A12-4994-9559-913ADDADCEB3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLscripts", "SQLscripts", "{61C0C4EA-D3A2-4A11-BF12-E3A7E9CBDBEE}"
+	ProjectSection(SolutionItems) = preProject
+		CreateTables.sql = CreateTables.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
