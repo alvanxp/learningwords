@@ -20,11 +20,21 @@ public class WordsController : ApiController
         private LearningWordDataModel db = new LearningWordDataModel();
 
         // GET: api/Words
-        public IQueryable<WordModel> GetWordLearneds()
-        {
+        public IEnumerable<WordModel> GetWordLearneds(string language, string toLanguage)
+        {            
+            IList<WordModel> result = new List<WordModel>();
             try
             {
-                return db.WordLearneds.Select(w => new WordModel(){Word = w.Word, Description = w.Description, Language = w.Language.LanguageCode});
+                var groups = db.WordLearneds.GroupBy(g => g.WordID);
+                foreach (var group in groups)
+                {
+                   var word = group.FirstOrDefault(g => g.Language.LanguageCode == language);
+                    var toWord = group.FirstOrDefault(g => g.Language.LanguageCode == toLanguage);
+                    result.Add(new WordModel() {
+                        Word = word.Word, Description = word.Description, Language = language,
+                    ToWord = toWord.Word, ToDescription = toWord.Description, ToLanguage = toLanguage});
+                }
+                return result;
                
             }
             catch (Exception ex)

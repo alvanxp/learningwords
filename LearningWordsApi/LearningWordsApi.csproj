@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -219,14 +220,55 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\common\js\directives\alerts.js" />
+    <Content Include="App\common\js\directives\workSpinner.js" />
+    <Content Include="App\common\js\services\addToken.js" />
+    <Content Include="App\common\js\services\alerting.js" />
+    <Content Include="App\common\js\services\currentUser.js" />
+    <Content Include="App\common\js\services\exceptionHandler.js" />
+    <Content Include="App\common\js\services\formEncode.js" />
+    <Content Include="App\common\js\services\interpolateDebug.js" />
+    <Content Include="App\common\js\services\localStorage.js" />
+    <Content Include="App\common\js\services\log.js" />
+    <Content Include="App\common\js\services\loginRedirect.js" />
+    <Content Include="App\common\js\services\oauth.js" />
+    <Content Include="App\common\js\services\requestCounter.js" />
+    <Content Include="App\common\module.js" />
+    <Content Include="App\common\templates\alerts.html" />
+    <Content Include="App\Js\angular\angular-animate.js" />
+    <Content Include="App\Js\angular\angular-aria.js" />
+    <Content Include="App\Js\angular\angular-cookies.js" />
+    <Content Include="App\Js\angular\angular-loader.js" />
+    <Content Include="App\Js\angular\angular-messages.js" />
+    <Content Include="App\Js\angular\angular-mocks.js" />
+    <Content Include="App\Js\angular\angular-resource.js" />
+    <Content Include="App\Js\angular\angular-route.js" />
+    <Content Include="App\Js\angular\angular-sanitize.js" />
+    <Content Include="App\Js\angular\angular-scenario.js" />
+    <Content Include="App\Js\angular\angular-touch.js" />
+    <Content Include="App\Js\angular\angular.js" />
+    <Content Include="App\Js\google-chart\google-chart.js" />
+    <Content Include="App\Js\jasmine\boot.js" />
+    <Content Include="App\Js\jasmine\console.js" />
+    <Content Include="App\Js\jasmine\jasmine-html.js" />
+    <Content Include="App\Js\jasmine\jasmine.css" />
+    <Content Include="App\Js\jasmine\jasmine.js" />
+    <Content Include="App\Js\jasmine\jasmine_favicon.png" />
+    <Content Include="App\Js\jquery.knob\jquery.knob.js" />
+    <Content Include="App\Js\jquery\jquery-2.1.3.js" />
+    <Content Include="App\Js\physicsjs\physicsjs-full.js" />
+    <Content Include="App\Js\tubular\tubular.js" />
+    <Content Include="App\Js\ui-bootstrap\ui-bootstrap-tpls.js" />
+    <Content Include="App\Js\ui-router\ui-router.js" />
+    <Content Include="App\Word\js\controllers\errorProneController.js" />
+    <Content Include="App\Word\js\controllers\MainController.js" />
+    <Content Include="App\Word\js\services\googleTranslator.js" />
+    <Content Include="App\Word\module.js" />
+    <Content Include="App\Word\shell.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="default.html" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -246,18 +288,15 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\leraningwords.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Styles\animate.css" />
+    <Content Include="Styles\css\bootstrap.css" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Styles\js\bootstrap.js" />
+    <Content Include="Styles\site.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -273,17 +312,18 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Word\js\directives\" />
+    <Folder Include="App\Word\templates\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,51 @@
+﻿<html ng-app="learningWords">
+<head>
+    <title>Learning words</title>
+    <script src="app/js/jquery/jquery-2.1.3.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="/Styles/site.css" rel="stylesheet" />
+    <script src="app/js/angular/angular.js"></script>
+    <script src="app/js/angular/angular-route.js"></script>
+
+   
+    <link href="/Styles/animate.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">Ode To Food</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/apps/security/shell.html">Security</a></li>
+                <li><a href="apps/diagnostics/shell.html">Diagnostics</a></li>
+                <li><a href="apps/ui/shell.html">UI</a></li>
+                <li><a href="apps/forms/shell.html">Forms</a></li>
+                <li><a href="apps/integration/shell.html">Integration</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+               <div ng-view></div>   
+            </div>
+        </div>
+    </div>
+    <script src="app/js/angular/angular-animate.js"></script>
+    <script src="app/js/angular/angular-messages.js"></script>
+    <script src="app/js/ui-router/ui-router.js"></script>
+    <script src="app/js/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    
+    <script src="app/common/module.js"></script>
+    <script src="app/common/js/services/alerting.js"></script>
+    <script src="app/common/js/directives/alerts.js"></script>
+    <script src="app/common/js/services/requestCounter.js"></script>
+    <script src="app/common/js/directives/workSpinner.js"></script>
+    <script src="app/common/js/services/exceptionHandler.js"></script>
+
+    <script src="app/Word/module.js"></script>
+    <script src="app/Word/js/controllers/MainController.js"></script>
+</body>
+</html>
