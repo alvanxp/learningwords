@@ -30,7 +30,7 @@ public class WordsController : ApiController
                 {
                    var word = group.FirstOrDefault(g => g.Language.LanguageCode == language);
                     var toWord = group.FirstOrDefault(g => g.Language.LanguageCode == toLanguage);
-                    result.Add(new WordModel() {
+                    result.Add(new WordModel() { WordId = group.Key,
                         Word = word.Word, Description = word.Description, Language = language,
                     ToWord = toWord.Word, ToDescription = toWord.Description, ToLanguage = toLanguage});
                 }
@@ -94,19 +94,31 @@ public class WordsController : ApiController
 
     // PUT: api/Words/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutWordLearned(int id, WordLearned wordLearned)
+        public async Task<IHttpActionResult> PutWordLearned(WordModel wordLearned)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != wordLearned.ID)
-            {
-                return BadRequest();
-            }
+            //if (id != wordLearned.ID)
+            //{
+            //    return BadRequest();
+            //}
 
-            db.Entry(wordLearned).State = EntityState.Modified;
+           var word = await db.WordLearneds.FirstOrDefaultAsync(
+               w=>w.WordID == wordLearned.WordId && w.Language.LanguageCode == wordLearned.Language);
+            var toWord = await db.WordLearneds.FirstOrDefaultAsync(w => w.WordID == wordLearned.WordId &&
+            w.Language.LanguageCode == wordLearned.ToLanguage);
+
+            word.Word = wordLearned.Word;
+            word.Description = wordLearned.Description;
+
+            toWord.Word = wordLearned.ToWord;
+            toWord.Description = wordLearned.ToDescription;
+
+            db.Entry(word).State = EntityState.Modified;
+            db.Entry(toWord).State = EntityState.Modified;
 
             try
             {
@@ -114,17 +126,19 @@ public class WordsController : ApiController
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!WordLearnedExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(HttpStatusCode.InternalServerError);
+                throw;
+                //if (!WordLearnedExists(wordLearned.WordId))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return StatusCode(HttpStatusCode.OK);
         }
 
         // POST: api/Words

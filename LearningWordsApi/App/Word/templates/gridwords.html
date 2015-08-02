@@ -1,0 +1,22 @@
+﻿<div>
+    <h3 class="text-muted">Learned words : {{words.length}}<button id="saveButton" class="btn-lg btn-success pull-right" ng-click="newWord()">New Word</button></h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Word</th>
+                <th>Description</th>
+                <th>Traslation</th>
+                <th>Descrición</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="word in words">
+                <td>{{word.Word}}</td>
+                <td>{{word.Description}}</td>
+                <td>{{word.ToWord}}</td>
+                <td>{{word.ToDescription}}</td>
+                <td><button class="btn btn-xs btn-danger" ng-click="editWord(word)">Editar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

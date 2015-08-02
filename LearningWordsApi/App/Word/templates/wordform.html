@@ -1,0 +1,40 @@
+﻿<div>
+    <div class="span6">
+
+        <div class="row-fluid">
+            <div class="span6">
+                <label for="englishWordText">Word</label>
+            </div>
+            <div class="span6">
+                <textarea id="englishWordText" class="form-control" rows="3" autofocus ng-model="word"></textarea>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6"><label for="englishDescriptionText">Description</label></div>
+            <div class="span6"><textarea id="englishDescriptionText" class="form-control" rows="3" autofocus ng-model="description"></textarea></div>
+        </div>
+    </div>
+    <div class="span6">
+        Spanish
+        <div class="row-fluid">
+            <div class="span6">
+                <label for="traslatedText">Traslation</label>
+            </div>
+            <div class="span6">
+                <textarea id="traslatedText" class="form-control" rows="3" ng-model="toword"></textarea>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+                <label for="translatedDescriptionText">Description</label>
+            </div>
+            <div class="span6">
+                <textarea id="translatedDescriptionText" class="form-control" rows="3" autofocus ng-model="todescription"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="pull-right">
+        <button id="saveButton" class="btn btn-primary" ng-click="saveWord()">Save</button>
+        <button class="btn btn-primary" ng-click="clear()">Cancel</button>
+    </div>
+</div>

@@ -1,4 +1,6 @@
-﻿namespace LearningWordsApi.DataAccess
+﻿using System;
+
+namespace LearningWordsApi.DataAccess
 {
     public class WordModel
     {
@@ -8,5 +10,6 @@
         public string ToWord { get; set; }
         public string ToLanguage { get; set; }
         public string ToDescription { get; set; }
+        public Guid WordId { get; set; }
     }
 }
