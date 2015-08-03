@@ -1,11 +1,9 @@
 ﻿<div class="row" >
         <div class="span12">
-            English
-            <div class="row-fluid">
-                <div class="col-md-8">
-                    
+            <div class="row">
+                <div class="col-md-8">                    
                     <div ng-include="'app/Word/templates/gridwords.html'" ng-show="!allowEdition"></div>
-                    <div ng-include="'app/Word/templates/wordform.html'" ng-show="allowEdition"></div>
+                    <div class="bg-info" ng-include="'app/Word/templates/wordform.html'" ng-show="allowEdition"></div>
                 </div>
                 <div class="col-md-4">
                     <alerts></alerts>

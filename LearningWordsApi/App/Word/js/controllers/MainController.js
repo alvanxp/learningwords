@@ -1,6 +1,7 @@
 ﻿(function (module) {
     var MainController = function ($scope, $http, alerting) {
         var addNewWord = function () {
+
             var newWord = {
                 Word: $scope.word,
                 Language: 'EN',
@@ -20,7 +21,8 @@
                 });
         };
 
-        var updateWord = function(){
+        var updateWord = function () {
+
             var updatedWord = {
                 WordId: $scope.wordId,
                 Word: $scope.word,
@@ -40,8 +42,6 @@
                     alerting.addInfo("Error");
                 });        
         };
-
-
 
         var saveword = function () {
             
@@ -72,6 +72,7 @@
         var newWord = function () {
             $scope.allowEdition = true;
             $scope.isEditing = false;
+            $scope.message = 'Enter you new word!';
         };
 
         var editWord = function (word) {
@@ -82,6 +83,7 @@
             $scope.description = word.Description;
             $scope.toword = word.ToWord;
             $scope.todescription = word.ToDescription;
+            $scope.message = '';
         };
         $scope.wordId='';
         $scope.word = '';
@@ -95,6 +97,7 @@
         $scope.newWord = newWord;
         $scope.editWord = editWord;
         $scope.isEditing = false;
+        $scope.message = '';
         getWords();
     };
     module.controller("MainController", MainController)
