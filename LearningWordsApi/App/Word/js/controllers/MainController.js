@@ -1,5 +1,5 @@
 ﻿(function (module) {
-    var MainController = function ($scope, $http, alerting) {
+    var MainController = function ($scope, $http,editConfirm, alerting) {
         var addNewWord = function () {
 
             var newWord = {
@@ -44,14 +44,16 @@
         };
 
         var saveword = function () {
-            
+          
+                if ($scope.isEditing) {
+                    updateWord();
+                }
+                else {
+                    addNewWord();
+                }
+           
             // $http.get("http://learningwords.azurewebsites.net/api/words/random?from=EN&to=ES").then()
-            if ($scope.isEditing) {
-                updateWord();
-            }
-            else {
-                addNewWord();
-            }
+            
         };
 
         var getWords = function(){
@@ -73,6 +75,7 @@
             $scope.allowEdition = true;
             $scope.isEditing = false;
             $scope.message = 'Enter you new word!';
+            showPopUp();
         };
 
         var editWord = function (word) {
@@ -84,7 +87,21 @@
             $scope.toword = word.ToWord;
             $scope.todescription = word.ToDescription;
             $scope.message = '';
+            showPopUp();
         };
+
+
+        var showPopUp = function () {
+            editConfirm($scope).then(function (result) {
+                $scope = result;
+                saveword();
+            }, function () {
+                clear();
+            });
+        };
+
+        
+
         $scope.wordId='';
         $scope.word = '';
         $scope.description = '';

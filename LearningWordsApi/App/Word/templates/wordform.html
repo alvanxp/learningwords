@@ -1,43 +1,47 @@
-﻿<div class="form-word">
-    <form class="form-horizontal" role="form">
-        {{message}}
-        <h2>English</h2>
-        <div class="form-group">
-           
-            <label class="control-label col-sm-2" for="englishWordText">Word</label>
+﻿<div class="modal-header">
+    <h3 class="modal-title">Enter you new Word!!!!</h3>
+</div>
+<div class="modal-body">
+    <div class="form-word">
+        <form class="form-horizontal" role="form">
+             <h2>English</h2>
+            <div class="form-group">
 
-            <div class="col-md-6">
-                <textarea id="englishWordText" class="form-control" rows="3" autofocus ng-model="word"></textarea>
-            </div>
-        </div>
+                <label class="control-label col-sm-2" for="englishWordText">Word</label>
 
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="englishDescriptionText">Description</label>
-            <div class="col-md-6"><textarea id="englishDescriptionText" class="form-control" rows="3" autofocus ng-model="description"></textarea></div>
-        </div>
-
-        <h2>Spanish</h2>
-        <div class="form-group">
-            
-            <label class="control-label col-sm-2" for="traslatedText">Traslation</label>
-
-            <div class="col-md-6">
-                <textarea id="traslatedText" class="form-control" rows="3" ng-model="toword"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="translatedDescriptionText">Description</label>
-
-            <div class="col-md-6">
-                <textarea id="translatedDescriptionText" class="form-control" rows="3" autofocus ng-model="todescription"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button id="saveButton" class="btn btn-primary" ng-click="saveWord()">Save</button>
-                <button class="btn btn-primary" ng-click="clear()">Cancel</button>
+                <div class="col-md-6">
+                    <textarea id="englishWordText" class="form-control" rows="3" autofocus ng-model="model.word.word"></textarea>
+                </div>
             </div>
 
-        </div>
-    </form>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="englishDescriptionText">Description</label>
+                <div class="col-md-6"><textarea id="englishDescriptionText" class="form-control" rows="3" autofocus ng-model="model.word.description"></textarea></div>
+            </div>
+
+            <h2>Spanish</h2>
+            <div class="form-group">
+
+                <label class="control-label col-sm-2" for="traslatedText">Traslation</label>
+
+                <div class="col-md-6">
+                    <textarea id="traslatedText" class="form-control" rows="3" ng-model="model.word.toword"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="translatedDescriptionText">Description</label>
+
+                <div class="col-md-6">
+                    <textarea id="translatedDescriptionText" class="form-control" rows="3" autofocus ng-model="model.word.todescription"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button id="saveButton" class="btn btn-primary" ng-click="$close(model.word)">Save</button>
+                    <button class="btn btn-primary" ng-click="$dismiss()">Cancel</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
 </div>

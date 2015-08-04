@@ -262,6 +262,7 @@
     <Content Include="App\Js\ui-router\ui-router.js" />
     <Content Include="App\Word\js\controllers\errorProneController.js" />
     <Content Include="App\Word\js\controllers\MainController.js" />
+    <Content Include="App\Word\js\services\editConfirm.js" />
     <Content Include="App\Word\js\services\googleTranslator.js" />
     <Content Include="App\Word\module.js" />
     <Content Include="App\Word\shell.html" />
