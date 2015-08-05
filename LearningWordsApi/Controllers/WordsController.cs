@@ -100,12 +100,7 @@ public class WordsController : ApiController
             {
                 return BadRequest(ModelState);
             }
-
-            //if (id != wordLearned.ID)
-            //{
-            //    return BadRequest();
-            //}
-
+            
            var word = await db.WordLearneds.FirstOrDefaultAsync(
                w=>w.WordID == wordLearned.WordId && w.Language.LanguageCode == wordLearned.Language);
             var toWord = await db.WordLearneds.FirstOrDefaultAsync(w => w.WordID == wordLearned.WordId &&
@@ -158,12 +153,14 @@ public class WordsController : ApiController
             wordLearned.Language = language1;
             wordLearned.Word = word.Word;
             wordLearned.WordID = wordId;
+            wordLearned.Description = word.Description;
             db.WordLearneds.Add(wordLearned);
 
             var toWordLearned2 = new WordLearned();
             toWordLearned2.LanguageID = language2.ID;
             toWordLearned2.Language = language2;
             toWordLearned2.Word = word.ToWord;
+            toWordLearned2.Description = word.ToDescription;
             toWordLearned2.WordID = wordId;
             db.WordLearneds.Add(toWordLearned2);
 
