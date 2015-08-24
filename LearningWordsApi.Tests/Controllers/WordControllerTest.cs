@@ -1,10 +1,4 @@
-﻿using System;
-using System.Data.Entity.Infrastructure;
-using System.Web.Http;
-using LearningWordsApi.Controllers;
-using LearningWordsApi.DataAccess;
-using LearningWordsApi.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LearningWordsApi.Tests.Controllers
 {
@@ -22,26 +16,26 @@ namespace LearningWordsApi.Tests.Controllers
         [TestMethod]
         public async void TestPostWord()
         {
-            try
-            {
-                WordModel newWord = new WordModel()
-                {
-                    Word = "Name",
-                    Language = "EN",
-                    ToWord = "Nombre",
-                    Description = "Name of something",
-                    ToDescription = "Nombre de alguna cosa",
-                    ToLanguage = "ES"
-                };
+            //try
+            //{
+            //    WordModel newWord = new WordModel()
+            //    {
+            //        Word = "Name",
+            //        Language = "EN",
+            //        ToWord = "Nombre",
+            //        Description = "Name of something",
+            //        ToDescription = "Nombre de alguna cosa",
+            //        ToLanguage = "ES"
+            //    };
 
-                var wordController = new WordsController();
-                IHttpActionResult result = await wordController.PostWordLearned(newWord);
+            //    var wordController = new WordsController();
+            //    IHttpActionResult result = await wordController.PostWordLearned(newWord);
                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.StackTrace);
+            //}
 
 
 
