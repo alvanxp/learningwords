@@ -54,9 +54,9 @@ namespace LearningWordsApi
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+           // app.UseFacebookAuthentication(
+            //    appId: "434193680120211",
+           //     appSecret: "adc45c28ff8b73f694295dc79c80b6d0");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

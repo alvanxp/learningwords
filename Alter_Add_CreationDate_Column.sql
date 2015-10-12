@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[WordLearned]  ADD [CreationDateTime] DateTime null

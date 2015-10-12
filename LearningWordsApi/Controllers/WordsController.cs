@@ -110,22 +110,6 @@ public class WordsController : ApiController
             
         }
 
-        //// DELETE: api/Words/5
-        //[ResponseType(typeof(WordLearned))]
-        //public async Task<IHttpActionResult> DeleteWordLearned(int id)
-        //{
-        //    WordLearned wordLearned = await db.WordLearneds.FindAsync(id);
-        //    if (wordLearned == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.WordLearneds.Remove(wordLearned);
-        //    await db.SaveChangesAsync();
-
-        //    return Ok(wordLearned);
-        //}
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

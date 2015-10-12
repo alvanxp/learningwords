@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningWordsApi.Tests", "L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLscripts", "SQLscripts", "{61C0C4EA-D3A2-4A11-BF12-E3A7E9CBDBEE}"
 	ProjectSection(SolutionItems) = preProject
+		Alter_Add_CreationDate_Column.sql = Alter_Add_CreationDate_Column.sql
 		CreateTables.sql = CreateTables.sql
 	EndProjectSection
 EndProject

@@ -1,5 +1,8 @@
 ﻿(function (module) {
-    var MainController = function ($scope, $http,editConfirm, alerting) {
+    var MainController = function ($scope, $http, editConfirm, alerting) {
+
+        var currentWord;
+
         var addNewWord = function () {
 
             var newWord = {
@@ -13,8 +16,9 @@
 
             $http.post('api/words/', newWord)
                 .success(function (data, status, headers, config) {
-                    alerting.addInfo("Word Added: " + $scope.word)
-                    clear();
+                    alerting.addInfo("Word Added: " + $scope.word);
+                    $scope.words.push(newWord);
+                    $scope.clear();
                 })
                 .error(function (data, status, headers, config) {
                     alerting.addInfo("Error");
@@ -23,20 +27,21 @@
 
         var updateWord = function () {
 
-            var updatedWord = {
-                WordId: $scope.wordId,
-                Word: $scope.word,
-                Language: 'EN',
-                Description: $scope.description,
-                ToWord: $scope.toword,
-                ToLanguage: 'ES',
-                ToDescription: $scope.todescription
-            };
+                currentWord.WordId = $scope.wordId,
+                currentWord.Word= $scope.word,
+                currentWord.Language = 'EN',
+                currentWord.Description= $scope.description,
+                currentWord.ToWord= $scope.toword,
+                currentWord.ToLanguage= 'ES',
+                currentWord.ToDescription= $scope.todescription
+          
 
-            $http.put('api/words/', updatedWord)
+            $http.put('api/words/', currentWord)
                 .success(function (data, status, headers, config) {
-                    alerting.addInfo("Word updated: " + $scope.word)
-                    clear();
+                    //$scope.words.push(update)
+                    alerting.addInfo("Word updated: " + $scope.word);
+
+                    $scope.clear();
                 })
                 .error(function (data, status, headers, config) {
                     alerting.addInfo("Error");
@@ -79,6 +84,7 @@
         };
 
         var editWord = function (word) {
+            currentWord = word;
             $scope.isEditing = true;
             $scope.allowEdition = true;
             $scope.wordId = word.WordId;
@@ -91,7 +97,7 @@
         };
 
 
-        var showPopUp = function () {
+        function showPopUp() {
             editConfirm($scope).then(function (result) {
                 $scope = result;
                 saveword();
@@ -117,5 +123,5 @@
         $scope.message = '';
         getWords();
     };
-    module.controller("MainController", MainController)
+    module.controller("MainController", MainController);
 }(angular.module("learningWords")));
