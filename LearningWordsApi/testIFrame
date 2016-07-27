@@ -1,0 +1,292 @@
+<html>
+<header>
+
+</header>
+<body>
+<a id="btn_VvrWindowLink_0" data-vvrbutton data-url="http://vehiclepricecertificate.com/?dealerid=221&amp;VIN=WBXPC93417WF07155"><img src="http://inventorycc.com/assets/images/commandcenter/pricecertificate/DealerID_221.jpg"></a>
+
+<script type="text/javascript">
+var isMobile = {
+    Android: function () {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+if (isMobile.any()) {
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var linksTarget = document.querySelectorAll('[data-vvrbutton]');  /*document.querySelector("a[data-targetmodal]");*/
+        //linksTarget.setAttribute('href', '#openModal');
+        //var linkUrl = linksTarget.getAttribute('data-url');
+        //if(linkTarget.getAttribute('data-targetmodal')=='true')
+        if (linksTarget != undefined) {
+            // linkTarget.addEventListener("click", function(){
+            // var win = window.open(linkUrl, '_blank');
+            // win.focus();;			
+            // });
+            //var screen = wndsize();
+            //alert(window.innerWidth + ' x ' + window.innerHeight);
+            configFrame(null, window.innerWidth - 10, window.innerHeight, true);
+            for (var i = 0; i < linksTarget.length; i++) {
+
+                linksTarget[i].setAttribute('href', '#openModal');
+                linksTarget[i].setAttribute("onclick", "ShowVvrModal(this);")
+            }
+        }
+    });
+} else {
+
+    /*Configuration at first*/
+    document.addEventListener('DOMContentLoaded', function () {
+        //parameters
+        var linksTarget = document.querySelectorAll('[data-vvrbutton]');
+        //linksTarget.setAttribute('href', '#openModal');
+        var Width = 910;//parseInt(linkTarget.getAttribute('data-targetwidth'));
+        var Height = 715;//parseInt(linkTarget.getAttribute('data-targetheight'));
+        //configFrame(linkTarget, Width, Height, false);
+        configFrame(null, Width, Height, false);
+
+        for (var i = 0; i < linksTarget.length; i++) {
+            linksTarget[i].setAttribute('href', '#openModal');
+            linksTarget[i].setAttribute("onclick", "ShowVvrModal(this);")
+        }
+
+    });
+    function wndsize() {
+        var w = 0; var h = 0;
+        //IE
+        if (!window.innerWidth) {
+            if (!(document.documentElement.clientWidth == 0)) {
+                //strict mode
+                w = document.documentElement.clientWidth; h = document.documentElement.clientHeight;
+            } else {
+                //quirks mode
+                w = document.body.clientWidth; h = document.body.clientHeight;
+            }
+        } else {
+            //w3c
+            w = window.innerWidth; h = window.innerHeight;
+        }
+        return { width: w, height: h };
+    }
+    document.onkeydown = function (evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            document.getElementById('lnkClose').click();
+        }
+    };
+}
+
+//global
+function configFrame(linkTarget, Width, Height, isMobile) {
+    // Create the <style> tag
+    var style = document.createElement("style");
+
+    // Add a media (and/or media query) here if you'd like!
+    // style.setAttribute("media", "screen")
+    // style.setAttribute("media", "only screen and (max-width : 1024px)")
+
+    style.appendChild(document.createTextNode(""));
+
+    // Add the <style> element to the page
+    document.head.appendChild(style);
+
+    var sheet = style.sheet;
+    InsertRule(sheet, ".modalDialog", 'position: fixed;font-family: Arial, Helvetica, sans-serif;top: 0;' +
+			'right: 0;' +
+            'overflow: hidden !important;' +
+			'bottom: 0;' +
+			'left: 0;' +
+			'background: rgba(0, 0, 0, 0.8);' +
+			'z-index: 99999;' +
+			'display:none;' +
+			'-webkit-transition: opacity 400ms ease-in;' +
+			'-moz-transition: opacity 400ms ease-in;' +
+			'transition: opacity 400ms ease-in;' +
+			'pointer-events: none;');
+    
+    InsertRule(sheet, ".modalDialog:target", 'display:inline-block;pointer-events: auto;');
+
+    //style Close
+    if (isMobile) {
+        InsertRule(sheet, ".close", 'background: #606061 !important;' +
+		'color: #FFFFFF !important;' +
+		'line-height: 25px !important;' +
+		'position: absolute !important;' +
+		'right: 10px !important;' +
+		'text-align: center !important;' +
+		'top: 0.3em !important;' +
+        'height: 1.7em !important;' +
+		'width: 120px !important;' +
+		'text-decoration: none !important;' +
+		'font-weight: bold !important;' +
+		'font-size: 1.35em !important;' +
+		'-webkit-border-radius: 12px !important;' +
+		'-moz-border-radius: 12px !important;' +
+		'border-radius: 12px !important;' +
+		'-moz-box-shadow: 1px 1px 3px #000 !important;' +
+		'-webkit-box-shadow: 1px 1px 3px #000 !important;' +
+		'box-shadow: 1px 1px 3px #000 !important;');
+
+    } else {
+        InsertRule(sheet, ".close", 'background: #606061;' +
+		'color: #FFFFFF;' +
+		'line-height: 25px;' +
+		'position: absolute;' +
+		'right: -12px;' +
+		'text-align: center;' +
+		'top: -10px;' +
+		'width: 24px;' +
+		'text-decoration: none;' +
+		'font-weight: bold;' +
+		'-webkit-border-radius: 12px;' +
+		'-moz-border-radius: 12px;' +
+		'border-radius: 12px;' +
+		'-moz-box-shadow: 1px 1px 3px #000;' +
+		'-webkit-box-shadow: 1px 1px 3px #000;' +
+		'box-shadow: 1px 1px 3px #000;');
+
+    }
+
+    InsertRule(sheet, ".close:hover", 'background: #00d9ff;');
+
+    var Iframe = document.createElement('iframe');
+    Iframe.setAttribute('id', 'myIframe');
+    if (isMobile) {
+        Iframe.setAttribute('width', '100%');
+        Iframe.setAttribute('height', '100%');
+        //Iframe.setAttribute('style', 'margin-top: 30px;');		 
+    } else {
+        Iframe.setAttribute('width', Width - 5 + 'px');
+        Iframe.setAttribute('height', Height - 5 + 'px');
+    }
+
+
+    var divModalContent = document.createElement('div');
+    divModalContent.setAttribute('id', 'openModalContent');
+    if (isMobile) {
+
+        divModalContent.setAttribute('style', 'width: 90% ; height:90%; position: relative;' +
+			'overflow-x: auto !important; overflow-y: auto !important;' +
+			'margin: 5% auto;' +
+            'margin-top: 2.9em !important;' +
+			'border-radius: 0px;' +
+			'background: #fff;' +
+			'background: -moz-linear-gradient(#fff, #999);' +
+			'background: -webkit-linear-gradient(#fff, #999);' +
+			'background: -o-linear-gradient(#fff, #999); -webkit-overflow-scrolling: touch;');
+
+    } else {
+        divModalContent.setAttribute('style', 'width: ' + Width + 'px ; height:' + Height + 'px; position: relative;' +
+			'margin: 1% auto;' +
+			'border-radius: 0px;' +
+			'background: #fff;' +
+			'background: -moz-linear-gradient(#fff, #999);' +
+			'background: -webkit-linear-gradient(#fff, #999);' +
+			'background: -o-linear-gradient(#fff, #999);');
+
+
+    }
+
+    var divModal = document.createElement('div');
+    divModal.setAttribute('id', 'openModal');
+    divModal.setAttribute('class', 'modalDialog');
+
+    var a = document.createElement('a');
+    a.setAttribute('href', '#');
+    a.setAttribute('title', 'Close');
+    a.setAttribute('id', 'lnkClose');
+    a.setAttribute('class', 'close');
+    if (isMobile) {
+        a.innerHTML = 'Close'
+    } else {
+        a.innerHTML = 'X'
+    }
+
+
+    //tagName
+    //divModalContent.appendChild(a);
+    //divModalContent.appendChild(Iframe);
+    //divModal.appendChild(divModalContent);
+
+    if (isMobile) {
+        divModalContent.appendChild(Iframe);
+        divModal.appendChild(a);
+        divModal.appendChild(divModalContent);
+    } else {
+        divModalContent.appendChild(a);
+        divModalContent.appendChild(Iframe);
+        divModal.appendChild(divModalContent);
+    }
+
+    document.getElementsByTagName('body')[0].appendChild(divModal);
+
+
+    a.addEventListener("click", function () {
+        window.location.href = "#";
+        document.getElementById('myIframe').src = "";
+    });
+
+    //add event to link button	
+    //var linkUrl = linkTarget.getAttribute('data-url');
+    //if (linkTarget != undefined) {
+    //    linkTarget.addEventListener("click", function () {
+    //        document.getElementById('myIframe').src = linkUrl;
+    //    });
+    //}
+}
+
+function ShowVvrModal(linkTarget) {
+
+    var linkUrl = linkTarget.getAttribute('data-url');
+    if (linkTarget != undefined) {
+        window.location.href = "#openModal";
+        document.getElementById('myIframe').src = linkUrl;
+        //RePositionModal();
+    }
+}
+
+function RePositionModal() {
+    if (!isMobile.any()) {
+        try {
+            var openModalContent = document.getElementById('openModalContent');
+            var topOpenModal = 0;
+            if (window.pageYOffsetParentPage != 'undefined') {
+                topOpenModal = window.pageYOffsetParentPage-15;
+            }
+            $(openModalContent).css({ top: topOpenModal });
+        } catch (ex) {
+            console.log(ex.message);
+        }
+    }
+}
+
+function InsertRule(styleSheet, rule, content) {
+
+    if (typeof (styleSheet.addRule) != 'undefined') {
+        styleSheet.addRule(rule, content, styleSheet.cssRules.length);
+    }
+    else {
+        styleSheet.insertRule(rule + " { " + content + " } ", styleSheet.cssRules.length);
+    }
+}
+
+</script>
+</body>
+</html>
+
